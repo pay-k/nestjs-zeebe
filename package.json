@@ -1,0 +1,23 @@
+{
+  "name": "@payk/nestjs-zeebe",
+  "version": "1.0.3",
+  "description": "Zeebe microservice module and client for nestjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "nestjs",
+    "zeebe"
+  ],
+  "author": "Dan Shapir",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^6.6.2",
+    "@nestjs/core": "^6.6.2",
+    "@nestjs/microservices": "^6.6.2",
+    "rxjs": "^6.5.2",
+    "zeebe-node": "^0.20.1"
+  }
+}
