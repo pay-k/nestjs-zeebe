@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "Zeebe microservice module and client for nestjs",
   "main": "dist/index.js",
+  "repository": { "url": "https://github.com/pay-k/nestjs-zeebe.git", "type": "git" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
