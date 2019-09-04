@@ -33,9 +33,9 @@ export class ZeebeServer extends Server implements CustomTransportStrategy {
         let jsonKey: ZeebeWorkerProperties = null;
         // See if it's a json, if so use it's data
         try {
-          jsonKey = JSON.parse(key);
-          workerOptions.taskType = key.type;
-          workerOptions.options = key.options || {};
+          jsonKey = JSON.parse(key) as ZeebeWorkerProperties;
+          workerOptions.taskType = jsonKey.type;
+          workerOptions.options = jsonKey.options || {};
         }
         catch(ex) {
           workerOptions.taskType = key;

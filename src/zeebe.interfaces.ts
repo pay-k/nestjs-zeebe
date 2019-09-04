@@ -2,12 +2,12 @@ import { ZBWorkerOptions, ZBClientOptions } from "zeebe-node/dist/lib/interfaces
 
 export interface ZeebeWorkerProperties {
     type: string;
-    options: ZBWorkerOptions;
+    options?: ZBWorkerOptions;
 }
 
 export interface ZeebeClientOptions {
     gatewayAddress: string;
-    options: ZBClientOptions;
+    options?: ZBClientOptions;
 }
 
 export interface ZeebeAsyncOptions {

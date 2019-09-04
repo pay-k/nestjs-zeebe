@@ -1,12 +1,13 @@
 {
   "name": "@payk/nestjs-zeebe",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "Zeebe microservice module and client for nestjs",
   "main": "dist/index.js",
   "repository": { "url": "https://github.com/pay-k/nestjs-zeebe.git", "type": "git" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "publish-package": "tsc && npm publish"
   },
   "keywords": [
     "nestjs",

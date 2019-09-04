@@ -54,7 +54,7 @@ export class ZeebeModule implements OnModuleDestroy {
     private static createOptionsProvider(options : ZeebeClientOptions): Provider {
         return {
             provide: ZEEBE_OPTIONS_PROVIDER,
-            useValue: { options },
+            useValue: options,
         };
     }
     
