@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ZEEBE_CONNECTION_PROVIDER } from '../zeebe.constans';
 import { ZBClient } from 'zeebe-node';
 import * as process from 'process';
-import { WorkerProperties } from '../zeebe.interfaces';
+import { ZeebeWorkerProperties } from '../zeebe.interfaces';
 
 @Injectable()
 export class ZeebeServer extends Server implements CustomTransportStrategy {
@@ -30,7 +30,7 @@ export class ZeebeServer extends Server implements CustomTransportStrategy {
           options: {},
           onConnectionError: undefined
         }
-        let jsonKey: WorkerProperties = null;
+        let jsonKey: ZeebeWorkerProperties = null;
         // See if it's a json, if so use it's data
         try {
           jsonKey = JSON.parse(key);

@@ -3,17 +3,17 @@ import * as ZB from 'zeebe-node';
 import { ModuleRef } from '@nestjs/core';
 import { ZBClientOptions } from 'zeebe-node/dist/lib/interfaces';
 import { ZEEBE_OPTIONS_PROVIDER, ZEEBE_CONNECTION_PROVIDER } from './zeebe.constans';
+import { ZeebeClientOptions, ZeebeAsyncOptions } from './zeebe.interfaces';
 
 @Module({})
 export class ZeebeModule implements OnModuleDestroy {
     constructor(private readonly moduleRef: ModuleRef) {}
 
-    public static forRoot(gatewayAddress: string, options: ZBClientOptions = {}): DynamicModule {
-        console.log('forRoot');
+    public static forRoot(options : ZeebeClientOptions): DynamicModule {
         const optionsProviders: Provider[] = [];
         const connectionProviders: Provider[] = [];
     
-        optionsProviders.push(this.createOptionsProvider(gatewayAddress, options));
+        optionsProviders.push(this.createOptionsProvider(options));
     
         connectionProviders.push(this.createConnectionProvider());
         
@@ -27,29 +27,22 @@ export class ZeebeModule implements OnModuleDestroy {
         };
     }
 
-    public static forRootAsync(gatewayAddress: string, options: ZBClientOptions): DynamicModule {
-    
-        // const connectionProviders = [
-        //   {
-        //     provide: createConnectionToken('default'),
-        //     useFactory: async (config: AmqpOptionsInterface) => await from(amqp.connect(config)).pipe(retry(options.retrys, options.retryDelay)).toPromise(),
-        //     inject: [createOptionsToken('default')],
-        //   },
-        // ];
-    
-        // return {
-        //   module: AmqpModule,
-        //   providers: [
-        //     {
-        //       provide: createOptionsToken('default'),
-        //       useFactory: options.useFactory,
-        //       inject: options.inject || [],
-        //     },
-        //     ...connectionProviders,
-        //   ],
-        //   exports: connectionProviders,
-        // };
-        return null;
+    public static forRootAsync(options: ZeebeAsyncOptions): DynamicModule {
+        const connectionProviders: Provider[] = [];
+        connectionProviders.push(this.createConnectionProvider());
+
+        return {
+          module: ZeebeModule,
+          providers: [
+            {
+              provide: ZEEBE_OPTIONS_PROVIDER,
+              useFactory: options.useFactory,
+              inject: options.inject || [],
+            },
+            ...connectionProviders,
+          ],
+          exports: connectionProviders,
+        };
       }
     
     public static forFeature(): DynamicModule {
@@ -58,10 +51,10 @@ export class ZeebeModule implements OnModuleDestroy {
         };
     }
 
-    private static createOptionsProvider(gatewayAddress: string, options: ZBClientOptions): Provider {
+    private static createOptionsProvider(options : ZeebeClientOptions): Provider {
         return {
             provide: ZEEBE_OPTIONS_PROVIDER,
-            useValue: { gatewayAddress, options },
+            useValue: { options },
         };
     }
     
@@ -69,7 +62,7 @@ export class ZeebeModule implements OnModuleDestroy {
         return {
             provide: ZEEBE_CONNECTION_PROVIDER,
             //TODO resolve host url: do I need to? Seems to work aready? Just verify
-            useFactory: async (config: { gatewayAddress: string, options: ZBClientOptions} ) => { console.log(config.gatewayAddress); return new ZB.ZBClient(config.gatewayAddress, config.options); },
+            useFactory: async (config: ZeebeClientOptions ) => { console.log(config.gatewayAddress); return new ZB.ZBClient(config.gatewayAddress, config.options); },
             inject: [ZEEBE_OPTIONS_PROVIDER],
         };
     }
