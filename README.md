@@ -42,30 +42,30 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
             return this.zbClient.createWorkflowInstance('order-process', { test: 1, or: 'romano'});
         }
 
-        // Subscribe to events of type 'inventory-service and create a worker with the options as passed below
-        @ZeebeWorker({ type: 'inventory-service', options: { maxJobsToActivate: 10, timeout: 300 }})
-        inventoryService(job, complete) {
-            console.log('inventory-service, Task variables', job.variables)
-            let updatedVariables = Object.assign({}, job.variables, {
-            inventoryService: 'Did my job',
-            })
-        
-            // Task worker business logic goes here
-        
-            complete(updatedVariables)
-        }
-
-        // Subscribe to events of type 'inventory-service and create a worker with the options as passed below
-        @ZeebeWorker({ type: 'payment-service' })
+        // Subscribe to events of type 'payment-service
+        @ZeebeWorker('payment-service')
         paymentService(job, complete) {
-            console.log('Payment-service, Task variables', job.variables)
+            console.log('Payment-service, Task variables', job.variables);
             let updatedVariables = Object.assign({}, job.variables, {
             paymentService: 'Did my job',
-            })
-        
+            });
+
             // Task worker business logic goes here
-        
-            complete(updatedVariables)
+
+            complete(updatedVariables);
+        }
+
+        // Subscribe to events of type 'inventory-service and create a worker with the options as passed below (zeebe-node ZBWorkerOptions)
+        @ZeebeWorker('inventory-service', { maxJobsToActivate: 10, timeout: 300 })
+        inventoryService(job, complete) {
+            console.log('inventory-service, Task variables', job.variables);
+            let updatedVariables = Object.assign({}, job.variables, {
+            inventoryVar: 'Inventory donnnneee',
+            });
+
+            // Task worker business logic goes here
+
+            complete(updatedVariables);
         }
     }
 
