@@ -1,7 +1,6 @@
 import { Module, OnModuleDestroy, DynamicModule, Provider } from '@nestjs/common';
 import * as ZB from 'zeebe-node';
 import { ModuleRef } from '@nestjs/core';
-import { ZBClientOptions } from 'zeebe-node/dist/lib/interfaces';
 import { ZEEBE_OPTIONS_PROVIDER, ZEEBE_CONNECTION_PROVIDER } from './zeebe.constans';
 import { ZeebeClientOptions, ZeebeAsyncOptions } from './zeebe.interfaces';
 

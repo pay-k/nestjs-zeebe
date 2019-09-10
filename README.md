@@ -29,7 +29,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
     import { AppService } from './app.service';
     import { MessagePattern } from '@nestjs/microservices';
     import { ZBClient } from 'zeebe-node';
-    import { CreateWorkflowInstanceResponse, CompleteFn } from 'zeebe-node/dist/lib/interfaces';
+    import { CreateWorkflowInstanceResponse, CompleteFn } from 'zeebe-node/interfaces';
     import { ZEEBE_CONNECTION_PROVIDER } from '@payk/nestjs-zeebe';
 
     @Controller()
