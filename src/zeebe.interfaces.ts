@@ -1,4 +1,4 @@
-import { ZBWorkerOptions, ZBClientOptions } from "zeebe-node/dist/lib/interfaces";
+import { ZBWorkerOptions, ZBClientOptions } from "zeebe-node/interfaces";
 
 export interface ZeebeWorkerProperties {
     type: string;

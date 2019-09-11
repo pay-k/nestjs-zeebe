@@ -1,6 +1,6 @@
 import { ZeebeExceptionFilter } from './zeebe.exception.filter';
 import { MessagePattern } from '@nestjs/microservices';
-import { ZBWorkerOptions } from 'zeebe-node/dist/lib/interfaces';
+import { ZBWorkerOptions } from 'zeebe-node/interfaces';
 import { UseFilters } from '@nestjs/common';
 
 export const ZeebeWorker =  (type: string, options?: ZBWorkerOptions) : MethodDecorator => {
