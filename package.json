@@ -1,6 +1,6 @@
 {
   "name": "@payk/nestjs-zeebe",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "Zeebe microservice module and client for nestjs",
   "main": "dist/index.js",
   "repository": { "url": "https://github.com/pay-k/nestjs-zeebe.git", "type": "git" },
@@ -20,6 +20,6 @@
     "@nestjs/core": "^6.6.2",
     "@nestjs/microservices": "^6.6.2",
     "rxjs": "^6.5.2",
-    "zeebe-node": "^0.20.1"
+    "zeebe-node": "^0.20.3"
   }
 }
