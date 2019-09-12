@@ -5,6 +5,14 @@ import { ZBClient } from 'zeebe-node';
 import * as process from 'process';
 import { ZeebeWorkerProperties } from '../zeebe.interfaces';
 
+/**
+ * A customer transport for Zeebe.
+ *
+ * @export
+ * @class ZeebeServer
+ * @extends {Server}
+ * @implements {CustomTransportStrategy}
+ */
 @Injectable()
 export class ZeebeServer extends Server implements CustomTransportStrategy {
     constructor(@Inject(ZEEBE_CONNECTION_PROVIDER) private readonly client: ZBClient) {

@@ -3,7 +3,17 @@ import { MessagePattern } from '@nestjs/microservices';
 import { ZBWorkerOptions } from 'zeebe-node/interfaces';
 import { UseFilters } from '@nestjs/common';
 
-export const ZeebeWorker =  (type: string, options?: ZBWorkerOptions) : MethodDecorator => {
+
+export /**
+ * A decorator that auto exposes the end-point as a Zeebe worker and overrides the NestJS
+ * Exception handling to allow failing a job once an exception is thrown.
+
+
+ * @param {string} type
+ * @param {ZBWorkerOptions} [options]
+ * @returns {MethodDecorator}
+ */
+const ZeebeWorker =  (type: string, options?: ZBWorkerOptions) : MethodDecorator => {
     return (...args) => {
         let messagePattern = MessagePattern({ type, options: options || null });
         let exceptionFilter = UseFilters(ZeebeExceptionFilter);

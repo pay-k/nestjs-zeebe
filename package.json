@@ -1,6 +1,6 @@
 {
   "name": "@payk/nestjs-zeebe",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Zeebe microservice module and client for nestjs",
   "main": "dist/index.js",
   "repository": {
@@ -8,7 +8,8 @@
     "type": "git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --opts .mocharc",
+    "prebuild": "rimraf dist",
     "build": "tsc",
     "publish-package": "tsc && npm publish"
   },
@@ -22,7 +23,20 @@
     "@nestjs/common": "^6.6.2",
     "@nestjs/core": "^6.6.2",
     "@nestjs/microservices": "^6.6.2",
+    "@nestjs/platform-express": "^6.6.7",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.2",
+    "typescript": "^3.6.3",
     "zeebe-node": "^0.20.3"
+  },
+  "devDependencies": {
+    "ts-node": "^8.3.0",
+    "@types/chai": "^4.2.2",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "rimraf": "^3.0.0",
+    "source-map-support": "^0.5.13",
+    "@nestjs/testing": "^6.6.7"
   }
 }

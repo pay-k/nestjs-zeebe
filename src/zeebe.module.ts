@@ -32,6 +32,7 @@ export class ZeebeModule implements OnModuleDestroy {
 
         return {
           module: ZeebeModule,
+          imports: options.imports || [],
           providers: [
             {
               provide: ZEEBE_OPTIONS_PROVIDER,
