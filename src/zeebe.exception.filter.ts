@@ -14,7 +14,6 @@ export class ZeebeExceptionFilter extends BaseRpcExceptionFilter {
   private readonly logger = new Logger(ZeebeExceptionFilter.name)
 
   catch(exception: any, host: ArgumentsHost) {
-    console.error('Error',exception);
     Logger.error({ message: 'Exception during zeebe worker', exception });
     throw exception;
     return null;

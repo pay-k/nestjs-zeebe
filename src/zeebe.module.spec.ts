@@ -19,7 +19,7 @@ describe('Winston module', function() {
   it('boots successfully asynchronously', async function() {
     @Injectable()
     class ConfigService {
-      public loggerOptions = { gatewayAddress: 'localhost:26500' };
+      public zeebeOptions = { gatewayAddress: 'localhost:26500' };
     }
 
     @Module({
@@ -31,8 +31,8 @@ describe('Winston module', function() {
     const rootModule = await Test.createTestingModule({
       imports: [
         ZeebeModule.forRootAsync({
-        imports: [FeatureModule],
-          useFactory: (cfg: ConfigService) => { return cfg.loggerOptions; },
+          imports: [FeatureModule],
+          useFactory: (cfg: ConfigService) => { return cfg.zeebeOptions; },
           inject: [ConfigService],
         }),
       ]

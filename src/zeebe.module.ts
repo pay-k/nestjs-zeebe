@@ -52,7 +52,7 @@ export class ZeebeModule implements OnModuleDestroy {
     }
 
     private static createOptionsProvider(options : ZeebeClientOptions): Provider {
-        return {
+      return {
             provide: ZEEBE_OPTIONS_PROVIDER,
             useValue: options,
         };
@@ -62,7 +62,7 @@ export class ZeebeModule implements OnModuleDestroy {
         return {
             provide: ZEEBE_CONNECTION_PROVIDER,
             //TODO resolve host url: do I need to? Seems to work aready? Just verify
-            useFactory: async (config: ZeebeClientOptions ) => { console.log(config.gatewayAddress); return new ZB.ZBClient(config.gatewayAddress, config.options); },
+            useFactory: async (config: ZeebeClientOptions ) => new ZB.ZBClient(config.gatewayAddress, config.options),
             inject: [ZEEBE_OPTIONS_PROVIDER],
         };
     }
