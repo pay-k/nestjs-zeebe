@@ -11,7 +11,7 @@
     "test": "mocha --opts .mocharc",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "publish-package": "tsc && npm publish"
+    "publish-package": "npm run-script build && npm publish"
   },
   "keywords": [
     "nestjs",
