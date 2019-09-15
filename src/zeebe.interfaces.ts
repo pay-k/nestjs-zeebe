@@ -18,7 +18,7 @@ export interface ZeebeWorkerProperties {
  * @interface ZeebeClientOptions
  */
 export interface ZeebeClientOptions {
-    gatewayAddress: string;
+    gatewayAddress?: string;
     options?: ZBWorkerOptions & ZBClientOptions;
 }
 
