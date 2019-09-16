@@ -28,8 +28,8 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: |
-      'dist/**/*'
-      '/package.js'
+      '/dist/**/*'
+      '/package.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
 
