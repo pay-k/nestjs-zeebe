@@ -26,12 +26,12 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    #SourceFolder: ''
+    SourceFolder: '/'
     Contents: |
-      'dist\**'
+      'dist/**'
       'package.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true'
+    CleanTargetFolder: true
 
 - task: PublishBuildArtifacts@1
   inputs:
