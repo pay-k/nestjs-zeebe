@@ -24,6 +24,13 @@ steps:
     npm run test
   displayName: 'npm test'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
