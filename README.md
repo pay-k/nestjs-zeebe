@@ -1,7 +1,18 @@
+<p align="center">
+  <a href="http://nestjs.com"><img src="https://nestjs.com/img/logo_text.svg" alt="Nest Logo" width="320" /></a>
+</p>
+
 # NestJS Zeebe Connector (Transport and Client)
 A zeebe transport and client for NestJS
 
 Using the zeebe-node module and exposing it as a NestJS transport and module.
+
+<p align="center">
+  
+[![Build Status](https://dev.azure.com/payk/PayK/_apis/build/status/pay-k.nestjs-zeebe?branchName=master)](https://dev.azure.com/payk/PayK/_build/latest?definitionId=1&branchName=master)
+
+</p>
+
 
 ## Install
     npm install @payk/nestjs-zeebe
