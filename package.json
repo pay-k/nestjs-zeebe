@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "mocha --opts .mocharc",
+    "test-juint": "mocha --opts .mocharc --reporter mocha-junit-reporter",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "publish-package": "npm run-script build && npm publish"
@@ -31,13 +32,14 @@
     "zeebe-node": "^0.20.6"
   },
   "devDependencies": {
-    "ts-node": "^8.3.0",
+    "@nestjs/testing": "^6.6.7",
     "@types/chai": "^4.2.2",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
+    "mocha-junit-reporter": "^1.23.1",
     "rimraf": "^3.0.0",
     "source-map-support": "^0.5.13",
-    "@nestjs/testing": "^6.6.7"
+    "ts-node": "^8.3.0"
   }
 }
