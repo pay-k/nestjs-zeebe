@@ -23,3 +23,9 @@ steps:
 - script: |
     npm run test
   displayName: 'npm test'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'nestjs-zeebe'
+    publishLocation: 'Container'
