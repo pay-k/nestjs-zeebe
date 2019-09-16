@@ -21,8 +21,16 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    npm run test
+    npm run test-juint
   displayName: 'npm test'
+
+
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-results.xml'
 
 - task: CopyFiles@2
   inputs:
