@@ -1,6 +1,6 @@
 {
   "name": "@payk/nestjs-zeebe",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Zeebe microservice module and client for nestjs",
   "main": "dist/index.js",
   "repository": {

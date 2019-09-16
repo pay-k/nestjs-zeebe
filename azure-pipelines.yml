@@ -36,8 +36,9 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: |
-      package.json
-      dist/**/*
+      **/*
+      !.git/**/*
+      !node_modules/**/*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
 
