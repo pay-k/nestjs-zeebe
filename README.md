@@ -52,7 +52,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
             // Task worker business logic goes here
 
-            complete(updatedVariables);
+            complete.success(updatedVariables);
         }
 
         // Subscribe to events of type 'inventory-service and create a worker with the options as passed below (zeebe-node ZBWorkerOptions)
@@ -65,7 +65,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
             // Task worker business logic goes here
 
-            complete(updatedVariables);
+            complete.success(updatedVariables);
         }
     }
 
