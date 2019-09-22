@@ -21,25 +21,25 @@
   "author": "Dan Shapir",
   "license": "ISC",
   "dependencies": {
-    "@nestjs/common": "^6.6.2",
-    "@nestjs/core": "^6.6.2",
-    "@nestjs/microservices": "^6.6.2",
-    "@nestjs/platform-express": "^6.6.7",
+    "@nestjs/common": "^6.7.1",
+    "@nestjs/core": "^6.7.1",
+    "@nestjs/microservices": "^6.7.1",
+    "@nestjs/platform-express": "^6.7.1",
     "nyc": "^14.1.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.2",
+    "rxjs": "^6.5.3",
     "typescript": "^3.6.3",
     "zeebe-node": "^0.20.6"
   },
   "devDependencies": {
-    "@nestjs/testing": "^6.6.7",
-    "@types/chai": "^4.2.2",
+    "@nestjs/testing": "^6.7.1",
+    "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "mocha-junit-reporter": "^1.23.1",
     "rimraf": "^3.0.0",
     "source-map-support": "^0.5.13",
-    "ts-node": "^8.3.0"
+    "ts-node": "^8.4.1"
   }
 }

@@ -9,7 +9,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
 <p align="center">
   
-[![Build Status](https://dev.azure.com/payk/PayK/_apis/build/status/pay-k.nestjs-zeebe?branchName=master)](https://dev.azure.com/payk/PayK/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/payk/PayK%20Public/_apis/build/status/pay-k.nestjs-zeebe?branchName=master)](https://dev.azure.com/payk/PayK%20Public/_build/latest?definitionId=1&branchName=master)
 
 </p>
 
