@@ -1,4 +1,4 @@
-import { Module, OnModuleDestroy, DynamicModule, Provider } from '@nestjs/common';
+import { Module, OnModuleDestroy, DynamicModule, Provider, Logger } from '@nestjs/common';
 import * as ZB from 'zeebe-node';
 import { ModuleRef } from '@nestjs/core';
 import { ZEEBE_OPTIONS_PROVIDER, ZEEBE_CONNECTION_PROVIDER } from './zeebe.constans';
@@ -67,6 +67,6 @@ export class ZeebeModule implements OnModuleDestroy {
         };
     }
     onModuleDestroy() {
-        throw new Error("Method not implemented.");
+        Logger.error('Zeebe Module destroyed')
     }
 }

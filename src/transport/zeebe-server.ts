@@ -57,12 +57,12 @@ export class ZeebeServer extends Server implements CustomTransportStrategy {
         jsonKey = JSON.parse(key) as ZeebeWorkerProperties;
         workerOptions.taskType = jsonKey.type;
         workerOptions.options = jsonKey.options || {};
-      } catch (ex) {
-        workerOptions.taskType = key;
-      }
 
-      workerOptions.id = `${workerOptions.taskType}_${process.pid}`;
-      const zbWorker = this.client.createWorker(workerOptions.id, workerOptions.taskType, workerOptions.handler, workerOptions.options);
+        workerOptions.id = `${workerOptions.taskType}_${process.pid}`;
+        const zbWorker = this.client.createWorker(workerOptions.id, workerOptions.taskType, workerOptions.handler, workerOptions.options);
+      } catch (ex) {
+        
+      }
     });
   }
 }

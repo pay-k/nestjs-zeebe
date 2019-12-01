@@ -58,7 +58,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
     // app.controller.ts
     import { Controller, Get, Inject } from '@nestjs/common';
     import { AppService } from './app.service';
-    import { ZBClient } from 'zeebe-node';
+    import { ZBClient, CompleteFn } from 'zeebe-node';
     import { CreateWorkflowInstanceResponse, CompleteFn } from 'zeebe-node/interfaces';
     import { ZEEBE_CONNECTION_PROVIDER, ZeebeWorker } from '@payk/nestjs-zeebe';
 
@@ -74,7 +74,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
         // Subscribe to events of type 'payment-service
         @ZeebeWorker('payment-service')
-        paymentService(job, complete) {
+        paymentService(job, complete: CompleteFn<any>) {
             console.log('Payment-service, Task variables', job.variables);
             let updatedVariables = Object.assign({}, job.variables, {
             paymentService: 'Did my job',
@@ -87,7 +87,7 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
         // Subscribe to events of type 'inventory-service and create a worker with the options as passed below (zeebe-node ZBWorkerOptions)
         @ZeebeWorker('inventory-service', { maxJobsToActivate: 10, timeout: 300 })
-        inventoryService(job, complete) {
+        inventoryService(job, complete: CompleteFn<any>) {
             console.log('inventory-service, Task variables', job.variables);
             let updatedVariables = Object.assign({}, job.variables, {
             inventoryVar: 'Inventory donnnneee',
