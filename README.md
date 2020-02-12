@@ -78,11 +78,11 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
         // Subscribe to events of type 'payment-service
         @ZeebeWorker('payment-service')
-        paymentService(@Payload() job, @Ctx() fn: CompleteFn<any> {
+        paymentService(@Payload() job, @Ctx() complete: CompleteFn<any> {
             console.log('Payment-service, Task variables', job.variables);
-            let updatedVariables = Object.assign({}, job.variables, {
-            paymentService: 'Did my job',
-            });
+            let updatedVariables = {
+                paymentService: 'Did my job',
+            };
 
             // Task worker business logic goes here
 
@@ -91,11 +91,11 @@ Using the zeebe-node module and exposing it as a NestJS transport and module.
 
         // Subscribe to events of type 'inventory-service and create a worker with the options as passed below (zeebe-node ZBWorkerOptions)
         @ZeebeWorker('inventory-service', { maxJobsToActivate: 10, timeout: 300 })
-        inventoryService(@Payload() job, @Ctx() fn: CompleteFn<any>) {
+        inventoryService(@Payload() job, @Ctx() complete: CompleteFn<any>) {
             console.log('inventory-service, Task variables', job.variables);
-            let updatedVariables = Object.assign({}, job.variables, {
-            inventoryVar: 'Inventory donnnneee',
-            });
+            let updatedVariables = {
+                inventoryVar: 'Inventory donnnneee',
+            };
 
             // Task worker business logic goes here
 
