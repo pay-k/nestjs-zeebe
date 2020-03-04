@@ -9,7 +9,7 @@ describe('Winston module', function() {
   it('boots successfully', async function() {
     const rootModule = await Test.createTestingModule({
       imports: [
-        ZeebeModule.forRoot({ gatewayAddress: 'localhost:26500' }),
+        ZeebeModule.forRoot({}),
       ],
     }).compile();
 
@@ -19,7 +19,7 @@ describe('Winston module', function() {
   it('boots successfully asynchronously', async function() {
     @Injectable()
     class ConfigService {
-      public zeebeOptions = { gatewayAddress: 'localhost:26500' };
+      public zeebeOptions = { };
     }
 
     @Module({
