@@ -44,24 +44,26 @@ export class ZeebeServer extends Server implements CustomTransportStrategy {
   private init(): void {
     const handlers = this.getHandlers();
     handlers.forEach((value, key: any, map) => {
-      let workerOptions = {
-        id: '',
-        taskType: '',
-        handler: value,
-        options: {},
-        onConnectionError: undefined
-      }
-      let jsonKey: ZeebeWorkerProperties = null;
-      // See if it's a json, if so use it's data
-      try {
-        jsonKey = JSON.parse(key) as ZeebeWorkerProperties;
-        workerOptions.taskType = jsonKey.type;
-        workerOptions.options = jsonKey.options || {};
+      if (typeof key === 'string' && key.includes('{')) {
+        let workerOptions = {
+          id: '',
+          taskType: '',
+          handler: value,
+          options: {},
+          onConnectionError: undefined
+        }
+        let jsonKey: ZeebeWorkerProperties = null;
+        // See if it's a json, if so use it's data
+        try {
+          jsonKey = JSON.parse(key) as ZeebeWorkerProperties;
+          workerOptions.taskType = jsonKey.type;
+          workerOptions.options = jsonKey.options || {};
 
-        workerOptions.id = `${workerOptions.taskType}_${process.pid}`;
-        const zbWorker = this.client.createWorker(workerOptions.id, workerOptions.taskType, workerOptions.handler, workerOptions.options);
-      } catch (ex) {
-        
+          workerOptions.id = `${workerOptions.taskType}_${process.pid}`;
+          const zbWorker = this.client.createWorker(workerOptions.id, workerOptions.taskType, workerOptions.handler, workerOptions.options);
+        } catch (ex) {
+          this.logger.error('Zeebe error:', ex);
+        }
       }
     });
   }
